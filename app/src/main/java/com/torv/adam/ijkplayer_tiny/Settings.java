@@ -20,8 +20,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import tv.danmaku.ijk.media.example.R;
-
 public class Settings {
     private Context mAppContext;
     private SharedPreferences mSharedPreferences;
