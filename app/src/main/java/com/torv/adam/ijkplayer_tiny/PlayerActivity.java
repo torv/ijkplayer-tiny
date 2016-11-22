@@ -32,8 +32,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         mVideoView.setMediaController(mMediaController);
         mVideoView.setHudView(mHudView);
-        mVideoView.setVideoPath("/storage/emulated/0/Download/少数派报告BD.mkv");
-//        mVideoView.setVideoPath(Environment.getExternalStorageDirectory() + "/Download/少数派报告BD.mkv");
+        mVideoView.setVideoPath(Environment.getExternalStorageDirectory() + "/Download/少数派报告BD.mkv");
 
         mVideoView.start();
     }
