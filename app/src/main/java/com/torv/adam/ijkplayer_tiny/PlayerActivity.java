@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TableLayout;
 
+import com.torv.adam.ijkplayer_tiny.media.AndroidMediaController;
 import com.torv.adam.ijkplayer_tiny.media.IjkVideoView;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
@@ -14,6 +15,7 @@ public class PlayerActivity extends AppCompatActivity {
 
     IjkVideoView mVideoView;
     TableLayout mHudView;
+    private AndroidMediaController mMediaController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +27,15 @@ public class PlayerActivity extends AppCompatActivity {
 
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+
+        mMediaController = new AndroidMediaController(this, false);
+
+        mVideoView.setMediaController(mMediaController);
         mVideoView.setHudView(mHudView);
-        mVideoView.setVideoPath(Environment.getExternalStorageDirectory() + "/Download/少数派报告BD.mkv");
+        mVideoView.setVideoPath("/storage/emulated/0/Download/少数派报告BD.mkv");
 //        mVideoView.setVideoPath(Environment.getExternalStorageDirectory() + "/Download/少数派报告BD.mkv");
-        mVideoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(IMediaPlayer iMediaPlayer) {
-                mVideoView.start();
-            }
-        });
+
+        mVideoView.start();
     }
 
     @Override
